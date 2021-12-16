@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
+  const title = "Blog Post";
+  const body = "Blog post data!";
+  const loading = false;
+  const showComments = true;
+
+  const comments = [
+    { id: 1, text: "Comment 1" },
+    { id: 2, text: "Comment 2" },
+    { id: 3, text: "Comment 3" },
+  ];
+
+  if (loading) return <h1>Loading...</h1>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>{title}</h1>
+      <h4>{body}</h4>
+
+      {showComments ? (
+        <div className="comments">
+          <h3>Comments ({comments.length})</h3>
+          <ul>
+            {comments.map((comment, index) => (
+              <li key={index}>{comment.text}</li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        "NO"
+      )}
+    </>
   );
 }
 
